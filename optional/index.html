@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="安装JetBrains Mono字体, 懒人笔记">
+    <meta name="keywords" content="Optional中的orElse、orElseGet、orElseThrow, 懒人笔记">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>安装JetBrains Mono字体 | 懒人笔记</title>
+    <title>Optional中的orElse、orElseGet、orElseThrow | 懒人笔记</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">安装JetBrains Mono字体</h1>
+                    <h1 class="description center-align post-title">Optional中的orElse、orElseGet、orElseThrow</h1>
                 </div>
             </div>
         </div>
@@ -368,12 +368,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JetBrains/">
-                                <span class="chip bg-color">JetBrains</span>
+                            <a href="/tags/Optional/">
+                                <span class="chip bg-color">Optional</span>
                             </a>
                         
-                            <a href="/tags/Font/">
-                                <span class="chip bg-color">Font</span>
+                            <a href="/tags/Java8/">
+                                <span class="chip bg-color">Java8</span>
                             </a>
                         
                     </div>
@@ -388,7 +388,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-13
+                    2021-03-15
                 </div>
                 
 
@@ -412,13 +412,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="什么是JetBrainsMono"><a href="#什么是JetBrainsMono" class="headerlink" title="什么是JetBrainsMono"></a>什么是JetBrainsMono</h3><p>JetBrains mono是 Jetbrains公司开发的一款开源字体，可免费商用，也是为开发者设计的字体，字体默认安装在 Jetbrains全家桶中的任意一款软件，从v2e19.3版开始，软件自带此款字体，老版本的可以自行下载安装，整体看起来比Input mono好看。<br>为什么说是为开发者设计的字体呢？<br>    在当今的大部分时间里，我们作为开发人员都在看代码。我们一直在寻找最佳字体，以使我们更容易在屏幕上查看文本。但是，许多流行字体中的逻辑并不总是考虑到通读代码和阅读书本之间的別。我们的眼以非常不同的方式沿代码移动，通常必须垂直移动和水平移动，这与阅读书籍不同，因为它们总是沿同一方向沿文本滑动因此，在使用 letBrains mono进行开发时，除其他外，重点研究了在长时间使用代码期间可能导致眼睛疲劳的问题。我们考虑了字母的大小和形状等问题；它们之间的空间量，自然以等竞字体设计的平衡；一些看起来不必要的纽节和符号之间不清楚的区别。<br>个人感觉：字体不适合新手开发，比如你输入一个-&gt;，它会给优化成→，那么会导致你误认为它就是一个箭头，给阅读代码带来一定的障碍。同时你给别人截图代码的时候，若是没有用过这种字体也会看不习惯，难以阅读。</p>
-<h3 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h3><ol>
-<li>在官网下载字体安装包<br><a target="_blank" rel="noopener" href="https://www.jetbrains.com/lp/mono/">https://www.jetbrains.com/lp/mono/</a></li>
-<li>解压字体包<br>解压安装包后，选中所有字体文件，右键安装，完成后重启IntellJ Idea （<strong>安装字体时选择给所有用户安装</strong>）</li>
-<li>选择字体<br>File &gt; Settings &gt; Editor &gt; Font 选择：JetBrains Mono</li>
-</ol>
+                <h3 id="orElse"><a href="#orElse" class="headerlink" title="orElse"></a>orElse</h3><p>当Optional值不存在时，调用orElse()返回orElse()的参数，如果Optional的值存在时返回Optional的值。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token string">"orElse"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// orElse</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token string">"null value"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// test</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<h3 id="orElseGet"><a href="#orElseGet" class="headerlink" title="orElseGet"></a>orElseGet</h3><p>当Optional值不存在时，调用orElseGet()中接口调用的返回值，如果Optional的值存在时返回optional的值。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseGet</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 一万</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseGet</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>orElse和orElseGet最直观的区别在于orElseGet可以传入一个Supplier接口，来定制实现逻辑。</strong></p>
+<h3 id="orElseThrow"><a href="#orElseThrow" class="headerlink" title="orElseThrow"></a>orElseThrow</h3><p>如果存在该值，返回包含的值，否则抛出由Supplier继承的异常（除了null,其他空类型的数据都属于存在该值）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">CouponVo</span> useCoupon <span class="token operator">=</span> couponList<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>couponVo <span class="token operator">-></span> couponId<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>couponVo<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">new</span> <span class="token class-name">ApiException</span><span class="token punctuation">(</span><span class="token class-name">OrderCode</span><span class="token punctuation">.</span>ORDER_COUPON_ERROR<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -444,7 +448,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://helongjun.github.io/an-zhuang-zi-ti/">https://helongjun.github.io/an-zhuang-zi-ti/</a>
+                    <a href="https://helongjun.github.io/optional/">https://helongjun.github.io/optional/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -482,12 +486,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JetBrains/">
-                                    <span class="chip bg-color">JetBrains</span>
+                                <a href="/tags/Optional/">
+                                    <span class="chip bg-color">Optional</span>
                                 </a>
                             
-                                <a href="/tags/Font/">
-                                    <span class="chip bg-color">Font</span>
+                                <a href="/tags/Java8/">
+                                    <span class="chip bg-color">Java8</span>
                                 </a>
                             
                         </div>
@@ -531,9 +535,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/optional/">
                     <div class="card-image">
@@ -551,9 +556,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -562,6 +567,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -584,13 +590,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/centos7-an-zhuang-git-yum-yuan-ma-bao-fang-shi/">
+                <a href="/an-zhuang-zi-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="CentOS7 安装Git（yum、源码包方式）">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="安装JetBrains Mono字体">
                         
-                        <span class="card-title">CentOS7 安装Git（yum、源码包方式）</span>
+                        <span class="card-title">安装JetBrains Mono字体</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -614,8 +620,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/JetBrains/">
+                        <span class="chip bg-color">JetBrains</span>
+                    </a>
+                    
+                    <a href="/tags/Font/">
+                        <span class="chip bg-color">Font</span>
                     </a>
                     
                 </div>
