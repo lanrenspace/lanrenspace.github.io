@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Optional中的orElse、orElseGet、orElseThrow, 懒人笔记">
+    <meta name="keywords" content="MySQL查询存在一个表中而不存在另一个表中的数据, 懒人笔记">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Optional中的orElse、orElseGet、orElseThrow | 懒人笔记</title>
+    <title>MySQL查询存在一个表中而不存在另一个表中的数据 | 懒人笔记</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Optional中的orElse、orElseGet、orElseThrow</h1>
+                    <h1 class="description center-align post-title">MySQL查询存在一个表中而不存在另一个表中的数据</h1>
                 </div>
             </div>
         </div>
@@ -368,18 +368,27 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Optional/">
-                                <span class="chip bg-color">Optional</span>
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
                             </a>
                         
-                            <a href="/tags/Java8/">
-                                <span class="chip bg-color">Java8</span>
+                            <a href="/tags/SQL/">
+                                <span class="chip bg-color">SQL</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -388,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-15
+                    2021-03-17
                 </div>
                 
 
@@ -412,17 +421,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="orElse"><a href="#orElse" class="headerlink" title="orElse"></a>orElse</h3><p>当Optional值不存在时，调用orElse()返回orElse()的参数，如果Optional的值存在时返回Optional的值。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token string">"orElse"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// orElse</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token string">"null value"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// test</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>A、B两表，找出ID字段中，存在A表，但是不存在B表的数据。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li>方法一<br>使用<code>NOT IN</code>执行效率低，容易理解<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> A<span class="token punctuation">.</span>ID <span class="token keyword">FROM</span> A <span class="token keyword">WHERE</span> A<span class="token punctuation">.</span>ID <span class="token operator">NOT</span> <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> ID <span class="token keyword">FROM</span> B<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>方法二<br>使用<code>LEFT JOIN...ON...</code>,<code>B.ID IS NULL</code> 表示左连接之后在<code>B.ID</code>字段为<code>NULL</code>的记录<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>ID <span class="token keyword">FROM</span> A <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> B <span class="token keyword">ON</span> A<span class="token punctuation">.</span>ID <span class="token operator">=</span> B<span class="token punctuation">.</span>ID <span class="token keyword">WHERE</span> B<span class="token punctuation">.</span>ID <span class="token operator">IS</span> <span class="token boolean">NULL</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>方法三<br>执行效率最快，逻辑相对前两种复杂<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> B <span class="token keyword">WHERE</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> NUM <span class="token keyword">FROM</span> A <span class="token keyword">WHERE</span> A<span class="token punctuation">.</span>ID <span class="token operator">=</span> B<span class="token punctuation">.</span>ID<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
 
-<h3 id="orElseGet"><a href="#orElseGet" class="headerlink" title="orElseGet"></a>orElseGet</h3><p>当Optional值不存在时，调用orElseGet()中接口调用的返回值，如果Optional的值存在时返回optional的值。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseGet</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 一万</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseGet</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><strong>orElse和orElseGet最直观的区别在于orElseGet可以传入一个Supplier接口，来定制实现逻辑。</strong></p>
-<h3 id="orElseThrow"><a href="#orElseThrow" class="headerlink" title="orElseThrow"></a>orElseThrow</h3><p>如果存在该值，返回包含的值，否则抛出由Supplier继承的异常（除了null,其他空类型的数据都属于存在该值）</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">CouponVo</span> useCoupon <span class="token operator">=</span> couponList<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>couponVo <span class="token operator">-></span> couponId<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>couponVo<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">new</span> <span class="token class-name">ApiException</span><span class="token punctuation">(</span><span class="token class-name">OrderCode</span><span class="token punctuation">.</span>ORDER_COUPON_ERROR<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -448,7 +453,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://helongjun.github.io/optional/">https://helongjun.github.io/optional/</a>
+                    <a href="https://helongjun.github.io/mysql/">https://helongjun.github.io/mysql/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -486,12 +491,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Optional/">
-                                    <span class="chip bg-color">Optional</span>
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
                                 </a>
                             
-                                <a href="/tags/Java8/">
-                                    <span class="chip bg-color">Java8</span>
+                                <a href="/tags/SQL/">
+                                    <span class="chip bg-color">SQL</span>
                                 </a>
                             
                         </div>
@@ -539,13 +544,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/mysql/">
+                <a href="/chao-mai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="MySQL查询存在一个表中而不存在另一个表中的数据">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="超卖（一）：使用UPDATE行锁解决超卖并发">
                         
-                        <span class="card-title">MySQL查询存在一个表中而不存在另一个表中的数据</span>
+                        <span class="card-title">超卖（一）：使用UPDATE行锁解决超卖并发</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -556,14 +561,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-20
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/%E8%B6%85%E5%8D%96%E9%97%AE%E9%A2%98/" class="post-category">
+                                    超卖问题
                                 </a>
                             
                             
@@ -573,12 +578,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">问题</span>
                     </a>
                     
-                    <a href="/tags/SQL/">
-                        <span class="chip bg-color">SQL</span>
+                    <a href="/tags/%E8%B6%85%E5%8D%96%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">超卖问题</span>
+                    </a>
+                    
+                    <a href="/tags/UPDATE/">
+                        <span class="chip bg-color">UPDATE</span>
                     </a>
                     
                 </div>
@@ -592,13 +601,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/an-zhuang-zi-ti/">
+                <a href="/optional/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="安装JetBrains Mono字体">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Optional中的orElse、orElseGet、orElseThrow">
                         
-                        <span class="card-title">安装JetBrains Mono字体</span>
+                        <span class="card-title">Optional中的orElse、orElseGet、orElseThrow</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -609,7 +618,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
                             </span>
                         <span class="publish-author">
                             
@@ -622,12 +631,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JetBrains/">
-                        <span class="chip bg-color">JetBrains</span>
+                    <a href="/tags/Optional/">
+                        <span class="chip bg-color">Optional</span>
                     </a>
                     
-                    <a href="/tags/Font/">
-                        <span class="chip bg-color">Font</span>
+                    <a href="/tags/Java8/">
+                        <span class="chip bg-color">Java8</span>
                     </a>
                     
                 </div>
