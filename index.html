@@ -488,7 +488,7 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/chao-mai-san-shi-yong-ree/">
+                    <a href="/chao-mai-san-shi-yong-reentrantlock-suo-jie-jue/">
                         <div class="card-image">
                             
                             
@@ -512,16 +512,12 @@ private Lock lock = new ReentrantLock();
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%B6%85%E5%8D%96%E9%97%AE%E9%A2%98/" class="post-category">
-                                    超卖问题
-                                </a>
-                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Lanren
                                 
                             </span>
                         </div>
@@ -549,7 +545,61 @@ private Lock lock = new ReentrantLock();
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/mai-er/">
+                    <a href="/chao-mai-yi-shi-yong-update-xing-suo-jie-jue-chao-mai-bing-fa/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="超卖（一）：使用UPDATE行锁解决超卖并发">
+                            
+                            <span class="card-title">超卖（一）：使用UPDATE行锁解决超卖并发</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                什么是超卖一件商品库存数量1件，最后卖出了2件（商品卖出数量超出了库存的数据）
+超卖现象
+系统中库存数量为1，但是产生了两笔订单
+卖家在发货时，发现只有1件商品，但是有两笔订单eg: 假如商品只剩下一件，A用户和B用户同时看到这个商品，加入
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Lanren
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">问题</span>
+                        </a>
+                        
+                        <a href="/tags/%E8%B6%85%E5%8D%96%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">超卖问题</span>
+                        </a>
+                        
+                        <a href="/tags/%E8%B6%85%E5%8D%96/">
+                            <span class="chip bg-color">超卖</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/chao-mai-er-shi-yong-synchronized-suo-guan-jian-zi-jie-jue/">
                         <div class="card-image">
                             
                             
@@ -574,16 +624,12 @@ UPDATE更新库存，导致库存为负数
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%B6%85%E5%8D%96%E9%97%AE%E9%A2%98/" class="post-category">
-                                    超卖问题
-                                </a>
-                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Lanren
                                 
                             </span>
                         </div>
@@ -592,70 +638,12 @@ UPDATE更新库存，导致库存为负数
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E9%97%AE%E9%A2%98/">
-                            <span class="chip bg-color">问题</span>
-                        </a>
-                        
                         <a href="/tags/%E8%B6%85%E5%8D%96%E9%97%AE%E9%A2%98/">
                             <span class="chip bg-color">超卖问题</span>
                         </a>
                         
-                        <a href="/tags/UPDATE/">
-                            <span class="chip bg-color">UPDATE</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/chao-mai/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="超卖（一）：使用UPDATE行锁解决超卖并发">
-                            
-                            <span class="card-title">超卖（一）：使用UPDATE行锁解决超卖并发</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                什么是超卖一件商品库存数量1件，最后卖出了2件（商品卖出数量超出了库存的数据）
-超卖现象
-系统中库存数量为1，但是产生了两笔订单
-卖家在发货时，发现只有1件商品，但是有两笔订单eg: 假如商品只剩下一件，A用户和B用户同时看到这个商品，加入
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%B6%85%E5%8D%96%E9%97%AE%E9%A2%98/" class="post-category">
-                                    超卖问题
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E9%97%AE%E9%A2%98/">
-                            <span class="chip bg-color">问题</span>
-                        </a>
-                        
-                        <a href="/tags/%E8%B6%85%E5%8D%96%E9%97%AE%E9%A2%98/">
-                            <span class="chip bg-color">超卖问题</span>
+                        <a href="/tags/%E8%B6%85%E5%8D%96/">
+                            <span class="chip bg-color">超卖</span>
                         </a>
                         
                         <a href="/tags/UPDATE/">
